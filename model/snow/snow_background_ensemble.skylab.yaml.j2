@@ -2,12 +2,12 @@ members:
   - datetime: '{{ snow_background_time_iso }}'
     filetype: fms restart
     state variables: [{{ snowdepth_vn }},vtype,slmsk]
-    datapath: mem001
+    datapath: mem1
     filename_sfcd: '{{ snow_background_time_fv3 }}.sfc_data.nc'
     filename_cplr: '{{ snow_background_time_fv3 }}.coupler.res'
   - datetime: '{{ snow_background_time_iso }}'
     filetype: fms restart
     state variables: [{{ snowdepth_vn }},vtype,slmsk]
-    datapath: mem002
+    datapath: mem2
     filename_sfcd: '{{ snow_background_time_fv3 }}.sfc_data.nc'
     filename_cplr: '{{ snow_background_time_fv3 }}.coupler.res'
