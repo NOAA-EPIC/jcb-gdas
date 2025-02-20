@@ -4,6 +4,8 @@
   # -----------------------
   obs space:
     name: ghcn_snow
+    distribution:
+      name: InefficientDistribution
     obsdatain:
       engine:
         type: H5File
@@ -20,7 +22,18 @@
   obs operator:
     name: Identity
   #
-
+  obs operator:
+    name: Identity
+  obs error:
+    covariance model: diagonal
+  obs localizations:
+  - localization method: Horizontal SOAR
+    lengthscale: 250e3
+    soar horizontal decay: 0.000021
+    max nobs: 50
+  - localization method: Vertical Brasnett
+    vertical lengthscale: 700
+  #
   # Observation Filters (QC)
   # ------------------------
   obs filters:
@@ -47,6 +60,10 @@
           name: GeoVaLs/vtype
         minvalue: 14.5
         maxvalue: 15.5
+    - filter: Difference Check # elevation check
+      reference: MetaData/stationElevation
+      value: GeoVaLs/filtered_orography
+      threshold: 200.
     - filter: Background Check
       filter variables:
       - name: totalSnowDepth
