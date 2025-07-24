@@ -22,6 +22,7 @@
   - filter: Domain Check
     where:
     - variable: {name: GeoVaLs/sea_area_fraction}
+      value: is_valid
       minvalue: 0.9
   - filter: Bounds Check
     minvalue: 0.1
@@ -42,3 +43,12 @@
     where:
     - variable: {name: GeoVaLs/distance_from_coast}
       minvalue: 100e3
+{% if letkf_app | default(false) %}
+  obs localizations:
+  - localization method: Rossby
+    base value: 100.0e3
+    rossby mult: 1.0
+    min grid mult: 2.0
+    min value: 200.0e3
+    max value: 900.0e3
+{% endif %}
