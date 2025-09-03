@@ -1,0 +1,7 @@
+datetime: '{{ land_background_time_iso }}' 
+datapath: ./
+prefix: jedi_smc
+filetype: fms restart
+filename_sfcd: '{{ land_background_time_fv3 }}.sfc_data.nc'
+filename_cplr: '{{ land_background_time_fv3 }}.coupler.res'
+state variables: [sheleg,stc,smc,vtype,slmsk]
