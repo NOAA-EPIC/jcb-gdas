@@ -1,7 +1,18 @@
 members:
-  - datetime: '{{ land_background_time_iso }}'
+  - datapath: ./
     filetype: fms restart
-    state variables: [sheleg,stc,smc,vtype,slmsk]
-    datapath: ./
+    skip coupler file: true
+    datetime: '{{ land_background_time_iso }}'
+    state variables:
+    - soilMoistureVolumetric
+    - vtype
+    - slmsk
+    - sheleg
+    - stc
+    - filtered_orography
+    field io names:
+      soilMoistureVolumetric: smc
+      filtered_orography: orog_filt
     filename_sfcd: '{{ land_background_time_fv3 }}.sfc_data.nc'
     filename_cplr: '{{ land_background_time_fv3 }}.coupler.res'
+    filename_orog: C96_oro_data.nc
