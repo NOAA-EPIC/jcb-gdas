@@ -10,7 +10,7 @@ output:
     - vtype
     - slmsk
     field io names:
-      totalSnowDepth: snodl
+      totalSnowDepth: {{ snowdepth_vn }}
 geometry:
   fms initialization:
     namelist filename: "{{ land_fv3jedi_files_path }}/fmsmpp.nml"
